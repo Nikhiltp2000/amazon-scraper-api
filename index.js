@@ -13,4 +13,19 @@ app.get("/", (req, res) => {
   res.send("Welcome to API ");
 });
 
+//GET product Details
+
+app.get("/products/:productId", async (req, res) => {
+  const { productId } = req.params;
+
+  try {
+    const response = await request(
+      `${baseUrl}&url=https://www.amazon.com/dp/${productId}`
+    );
+    res.json(JSON.parse(response));
+  } catch (error) {
+    res.json(error);
+  }
+});
+
 app.listen(PORT, () => console.log(`server running on port ${PORT}`));
