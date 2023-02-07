@@ -1,0 +1,16 @@
+const express = require("express");
+const request = require("request-promise");
+
+const app = express();
+const PORT = process.env.PORT || 5000;
+
+const apiKey = "49b63c7ca7d7db58570aca7a2d67ec7f";
+const baseUrl = `http://api.scraperapi.com?api_key=${apiKey}&autoparse=true`;
+
+app.use(express.json());
+
+app.get("/", (req, res) => {
+  res.send("Welcome to API ");
+});
+
+app.listen(PORT, () => console.log(`server running on port ${PORT}`));
